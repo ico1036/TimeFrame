@@ -1,8 +1,9 @@
 #pragma once
-
+#include <algorithm>
 #include <string>
 #include <stdexcept>
 #include <climits>
+#include "TChain.h"
 
 typedef long long TimeNS;
 

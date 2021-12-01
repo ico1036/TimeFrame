@@ -3,12 +3,18 @@
 #include "TimeNS.h"
 
 #include "TTreeReader.h"
+#include "TChain.h"
+#include "TFile.h"
+
+#include <random>
 
 #include <functional>
 #include <list>
 #include <memory>
 #include <chrono>
 #include <iterator>
+#include <algorithm>
+
 
 template<class IDType, class TimeType, class RowType>
 struct Templated_IDTimeRow
@@ -138,7 +144,8 @@ struct TimeFrameTree
          else
          {
             numberTreesCounted++;
-            numberEntriesCounter = reader.GetEntries();
+            numberEntriesCounter = reader.GetEntries(tree);
+            //numberEntriesCounter = reader.GetEntries();
             return numberEntriesCounter;
          }
          

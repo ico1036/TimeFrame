@@ -1,9 +1,10 @@
 #include "TFile.h"
 #include "TTree.h"
 
+#include <random>
 #include "../include/TimeNS.h"
 
-void MakeTTree()
+int main()
 {
     for(int j = 1; j < 4; j++)
     {
@@ -49,6 +50,7 @@ void MakeTTree()
         file.Write();
         file.Close();
     }
+	
+	return 0;
 
-    return 0;
 }

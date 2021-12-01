@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+g++ src/Iterate.cpp -o src/Iterate.exe `root-config --cflags --glibs`

@@ -1,5 +1,7 @@
 #include "../include/TimeFrame.h"
 #include "../include/TChainFactory.h"
+#include <map>
+
 
 struct Message
 {
@@ -50,7 +52,8 @@ public:
     double lastZ = 0;
 };
 
-void Iterate()
+//void Iterate()
+int main()
 {
     auto chain1 = makeChain("messages", "examples/", ".*1.*");
     auto chain2 = makeChain("messages", "examples/", ".*2.*");
@@ -73,10 +76,12 @@ void Iterate()
         lob.update(time, message);
     });
 
-    timeFrame.setForEachSnapshot(T_Hour, [&](TimeNS time, const map<int, LimitOrderBook>& lobs)
+    timeFrame.setForEachSnapshot(T_Hour, [&](TimeNS time, const std::map<int, LimitOrderBook>& lobs)
     {
         std::cout << lobs.size() << " internal states tracked at " << nsToTimestamp(time) << "                                             \n";
     });
 
     timeFrame.run();
+
+	return 0;
 }
